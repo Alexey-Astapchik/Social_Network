@@ -1,0 +1,5 @@
+.content_friends{
+    grid-area: content;
+    border: 3px solid #0d47a1;
+    border-radius: 7px;
+  }

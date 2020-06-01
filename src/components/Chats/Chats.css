@@ -1,0 +1,73 @@
+.content_chats{
+    grid-area: content;
+    border: 1px solid #3a3b3c;
+    background-color: #18191a;
+    box-shadow: 0 0 150px #000000;
+  }
+
+.dialogues{
+  display: flex;
+
+}
+
+.userNames{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: 120px;
+}
+
+.mes_inp{
+    outline: none;
+    background-color: #3a3b3c;
+    border: 1px solid #3a3b3c;
+    border-radius: 20px;
+    margin: 0;
+    width: 100%;
+    margin-left: 30px;
+    margin-top: 68px;
+}
+.mes_inp:valid{
+  background-color: #3a3b3c;
+  color: #e4e6eb;
+}
+
+.mes_inp:focus{
+  outline: none;
+}
+
+.mes_btn{
+  outline: none;
+  position: relative;
+  margin-top: 40px;
+  color: #e4e6eb;
+  border: 2px solid #3a3b3c;
+  border-radius: 20px;
+  background-color: #3a3b3c;
+  margin-left: 130px;
+  transition: all 0.5s;
+  padding-right: 10px;
+}
+.mes_btn:hover{
+  background-color: #212121;
+  color: #e4e6eb;
+  outline: none;
+}
+
+.mes_btn:focus{
+  outline: none;
+}
+
+.user_item{
+  margin-top: 40px;
+  font-size: 25px;
+}
+
+.messages{
+  padding-top: 30px;
+}
+.message-item{
+  margin-top: 40px;
+  font-size: 25px;
+}
