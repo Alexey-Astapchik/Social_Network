@@ -1,9 +1,10 @@
 import React from 'react';
 
-import MyPosts from '../MyPosts/MyPosts';
+import MyPosts_Container from '../MyPosts/MyPosts_Container';
 import ProfileItem from '../Profile/ProfileItem/ProfileItem'
 
 import '../Profile/Profile.css';
+import store from '../../redux/redux-store';
 
 
 const Profile = (props) => {
@@ -11,11 +12,7 @@ const Profile = (props) => {
     return (
       <div className="content">
         <ProfileItem />
-        <MyPosts 
-          postsData={props.state.postsData} 
-          newPostText={props.state.newPostText}
-          dispatch={ props.dispatch }
-        />
+        <MyPosts_Container store={store} />
       </div>
     )
 }

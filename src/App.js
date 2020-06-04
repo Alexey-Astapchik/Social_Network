@@ -5,12 +5,13 @@ import './App.css';
 import Header from './components/Header/Header';
 import Nav from './components/Nav/Nav';
 import Profile from './components/Profile/Profile';
-import Chats from './components/Chats/Chats';
+import Chats_Container from './components/Chats/Chats_Container';
 import Settings from './components/Settings/Settings';
 import Friends from './components/Friends/Friends';
 import Feed from './components/Feed/Feed'
 
 import { Route, BrowserRouter } from 'react-router-dom';
+import store from './redux/redux-store';
 
 const App = (props) => {
 
@@ -18,17 +19,14 @@ const App = (props) => {
     <BrowserRouter>
       <div className='wrapper'>
         <Header/>
-        <Nav state={props.state.sidebar}/>
+        <Nav state={props.state.sidebar} store={store}/>
         <Route path='/Friends' component={Friends}/>
         <Route path='/Feed' component={Feed}/>
         <Route path='/Settings' component={Settings}/>
-        <Route path='/Profile' render={ () => <Profile 
-                                state={props.state.profilePage} 
-                                dispatch={ props.dispatch }/> }/>
+        <Route path='/Profile' render={ () => <Profile store={props.store}/> }/>
         <Route 
           path='/Chats' 
-          render={ () => <Chats state={props.state.chatsPage} store={ props.store } 
-        />}
+          render={ () => <Chats_Container store={props.store} />}
         />
       </div>
     </BrowserRouter>

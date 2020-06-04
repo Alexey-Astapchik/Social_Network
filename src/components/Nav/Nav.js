@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import FriendsInfo from './FriendsInfo/FriendsInfo'
 
 const Nav = (props) => {
-
+  
   let friendsItem = props.state.friendsInfo.map( f => < FriendsInfo name={f.name} />);
 
 {/* <i className="fa fa-users" aria-hidden="true"></i> */}

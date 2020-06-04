@@ -7,18 +7,20 @@ import MessageItem from '../Chats/MessageItem/MessageItem';
 import { updateMessageBodyCreator, sendMessageCreator} from '../../redux/chatsPage_reducer';
 
 const Chats = (props) => {
+  
+    let state = props.chatsPage;
 
-    let chatsEl = props.state.chatsData.map( u =>  <DialogueItem name={u.name} id={u.id} /> )     
-    let messageEl = props.state.messagesData.map( m => <MessageItem message={m.message} /> )
-    let newMessageText = props.state.newMessageText;
+    let chatsEl = state.chatsData.map( u =>  <DialogueItem name={u.name} id={u.id} /> )     
+    let messageEl = state.messagesData.map( m => <MessageItem message={m.message} /> )
+    let newMessageText = state.newMessageText;
 
     let sendMessage = () => {
-        props.store.dispatch(sendMessageCreator());
+        props.onSendMessage();
     }
 
     let displayNewMessage = (e) => {
         let body = e.target.value;
-        props.store.dispatch(updateMessageBodyCreator(body));
+        props.updateDisplayMessage(body);
     }
 
     return (

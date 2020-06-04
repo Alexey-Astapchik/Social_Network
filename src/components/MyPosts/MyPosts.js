@@ -1,8 +1,7 @@
 import React from 'react';
 import Post from '../Post/Post';
+import '../MyPosts/MyPosts.css';
 
-import '../MyPosts/MyPosts.css'
-import {addPostActionCreator, updateNewPostActionCreator} from '../../redux/profilePage_reducer'
 
 const MyPosts = (props) => {
 
@@ -10,15 +9,17 @@ const MyPosts = (props) => {
 
   let newPostItem = React.createRef();
 
-  let addPost = () => { 
-    props.dispatch(addPostActionCreator());
-  }
+  let onAddPost = () => { 
+    props.addPost();
+    // props.dispatch(addPostActionCreator());
+  };
 
   let onPostChange = () => {
     let postItem = newPostItem.current.value;
-    let action = updateNewPostActionCreator(postItem);
-    props.dispatch(action);
-  }
+    props.updateNewPostText(postItem)
+    // let action = updateNewPostActionCreator(postItem);
+    // props.dispatch(action);
+  };
 
     return (
         <div>
@@ -38,7 +39,7 @@ const MyPosts = (props) => {
               </input>
               <div className='btns'>
               <button href="#" 
-                onClick={ addPost } 
+                onClick={ onAddPost } 
                 className="btn"><img src="https://img.icons8.com/color/48/000000/send-letter--v1.png"/>
                 Post
               </button>
