@@ -4,11 +4,10 @@ let initialState = {
         {id: 2, name: 'John'}, 
         {id: 3, name: 'Harvey'}
     ]
-}
+};
 
-const sidebar_reducer = (state = initialState, action) => {
+const sidebar_reducer = (state = initialState) => {
     
-
     return state;
 }
 

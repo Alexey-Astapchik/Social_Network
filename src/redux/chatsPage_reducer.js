@@ -24,16 +24,23 @@ let initialState = {
 };
 
 const chatsPage_reducer = (state = initialState, action) => {
-
-    if(action.type === ADD_NEW_MESSAGE_TEXT){
-        state.newMessageText = action.body;
-    } else if(action.type === SEND_MESSAGE){
-        let body = state.newMessageText;
-        state.newMessageText = '';
-        state.messagesData.push( {id: 6, message: body} );
+    switch(action.type) {
+        case ADD_NEW_MESSAGE_TEXT: 
+            return {
+                ...state,
+                newMessageText: action.body
+            };
+        case SEND_MESSAGE: 
+            let body = state.newMessageText;
+            return {
+                ...state,
+                newMessageText: '',
+                messagesData: [...state.messagesData,{id: 8, message: body}],
+            };
+            // stateCopy.messagesData.push( {id: 8, message: body} );
+        default:
+            return state;
     }
-
-    return state;
 };
 
 // Message in chats page

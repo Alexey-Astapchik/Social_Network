@@ -14,24 +14,22 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import store from './redux/redux-store';
 
 const App = (props) => {
-
   return (
     <BrowserRouter>
       <div className='wrapper'>
         <Header/>
-        <Nav state={props.state.sidebar} store={store}/>
+        <Nav />
         <Route path='/Friends' component={Friends}/>
         <Route path='/Feed' component={Feed}/>
         <Route path='/Settings' component={Settings}/>
         <Route path='/Profile' render={ () => <Profile store={props.store}/> }/>
-        <Route 
-          path='/Chats' 
-          render={ () => <Chats_Container store={props.store} />}
-        />
+        <Route path='/Chats' render={ () => <Chats_Container store={props.store} />}/>
       </div>
     </BrowserRouter>
   );
 }
+// store={props.store}
+// state={props.state.sidebar} store={store}
 
 
 export default App;

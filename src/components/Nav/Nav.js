@@ -2,13 +2,12 @@ import React from 'react';
 
 import styleEl from '../Nav/Nav.css';
 import { NavLink } from 'react-router-dom';
-import FriendsInfo from './FriendsInfo/FriendsInfo'
+import FriendsInfo from '../Nav/FriendsInfo/FriendsInfo'
 
 const Nav = (props) => {
   
-  let friendsItem = props.state.friendsInfo.map( f => < FriendsInfo name={f.name} />);
+  // let friendsItem = props.sidebar.friendsInfo.map( f => <FriendsInfo name={f.name}/> );
 
-{/* <i className="fa fa-users" aria-hidden="true"></i> */}
     return (
         <nav className="nav">
         <div className='naveItem'>
@@ -31,7 +30,8 @@ const Nav = (props) => {
           <div className="contacts">
             <p>Contacs</p>
           </div>
-          { friendsItem }
+          {/* { friendsItem } */}
+          <FriendsInfo/>
         </div>
       </nav>
     )

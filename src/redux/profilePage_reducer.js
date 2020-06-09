@@ -12,22 +12,30 @@ let initialState = {
 
 const profilePage_reducer = (state = initialState, action) => {
 
-    if(action.type === ADD_POST) {
-        let newPost = {
-            id: 4,
-            post: state.newPostText,
-            likeCounts: 0
-        };
-        state.postsData.push(newPost);
-        state.newPostText = '';
-    } else if (action.type === ADD_NEW_POST_TEXT){
-        state.newPostText = action.newText;
-    }
 
-    return state;
+    switch(action.type){
+        case ADD_POST: 
+            let newPost = {
+                id: 4,
+                post: state.newPostText,
+                likeCounts: 0
+            };
+            return {
+                ...state,
+                postsData: [...state.postsData, newPost],
+                newPostText: '',
+            }
+        case ADD_NEW_POST_TEXT: 
+            return {
+                ...state,
+                newPostText: action.newText,
+            };
+        default: 
+            return state;
+    }
 };
 
-// Post in main page
+// Post on the main page
 export const addPostActionCreator = () => ({ type: ADD_POST });
 export const updateNewPostActionCreator = (postItem) => ({type: ADD_NEW_POST_TEXT, newText: postItem});
 

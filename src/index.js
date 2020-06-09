@@ -6,19 +6,25 @@ import store from './redux/redux-store';
 import { Provider } from 'react-redux';
 
 
-let rerenderTheWholeTree = (state) => {
+// let rerenderTheWholeTree = (state) => {
   ReactDOM.render(
     <React.StrictMode>
     <Provider store={ store }>
-      <App state={ state } dispatch={ store.dispatch.bind(store) } store={ store } />
+      <App />
     </Provider>
-    </React.StrictMode>, document.getElementById('root')
-  );
-}
+    </React.StrictMode>, document.getElementById('root'));
+// }
+// state={ state } dispatch={ store.dispatch.bind(store) } store={ store } 
+// rerenderTheWholeTree(store.getState());
 
-rerenderTheWholeTree(store.getState());
-store.subscribe(() => {
-  let state = store.getState();
-  rerenderTheWholeTree(state);
-});
+// store.subscribe(() => {
+//   let state = store.getState();
+//   rerenderTheWholeTree(state);
+// });
+
+// rerenderTheWholeTree();
+
+// store.subscribe(()=> {
+//   rerenderTheWholeTree();
+// })
 
