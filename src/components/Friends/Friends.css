@@ -1,5 +1,65 @@
 .content_friends{
     grid-area: content;
-    border: 3px solid #0d47a1;
-    border-radius: 7px;
+    border: 1px solid #3a3b3c;
+    background-color: #181a1b;
+    box-shadow: 0 0 150px #000000;
   }
+
+.friend_card{
+  border: 1px solid #18191a;
+  border-radius: 15px;
+  padding: 20px 20px;
+  width: 40%;
+  height: 30%;
+  margin-left: 150px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #242627;
+  transition: all 0.2s;
+}
+.friends_info{
+  margin-left: 150px;
+  margin-top: -90px;
+}
+.friends_info p{
+  color: #e4e6eb;
+  font-size: 15px;
+}
+
+.friend_card:hover{
+  background-color: #212121;
+  color: #e4e6eb;
+  text-decoration: none;
+}
+
+.friend_logo{
+    background-image: url(https://i1.sndcdn.com/avatars-000099103084-pzfsjj-t500x500.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-top: 27px;
+    margin-right: 10px;
+    border: 1px solid #18191a;
+}
+
+
+
+.btn_follow{
+  padding: 10px 30px;
+  color: #e4e6eb;
+  border: 2px solid #3a3b3c;
+  border-radius: 20px;
+  background-color: #2d87ff;
+  margin-left: 10px;
+  transition: all 0.5s;
+  font-weight: 800;
+  font-size: 12px;
+}
+.btn_follow:hover{
+  background-color: #77a7ff;
+  color: #e4e6eb;
+  outline: none;
+}

@@ -7,7 +7,7 @@ import Nav from './components/Nav/Nav';
 import Profile from './components/Profile/Profile';
 import Chats_Container from './components/Chats/Chats_Container';
 import Settings from './components/Settings/Settings';
-import Friends from './components/Friends/Friends';
+import Friends_Container from './components/Friends/Friends_Container';
 import Feed from './components/Feed/Feed'
 
 import { Route, BrowserRouter } from 'react-router-dom';
@@ -19,7 +19,7 @@ const App = (props) => {
       <div className='wrapper'>
         <Header/>
         <Nav />
-        <Route path='/Friends' component={Friends}/>
+        <Route path='/Friends' render={() => <Friends_Container/>}/>
         <Route path='/Feed' component={Feed}/>
         <Route path='/Settings' component={Settings}/>
         <Route path='/Profile' render={ () => <Profile store={props.store}/> }/>
