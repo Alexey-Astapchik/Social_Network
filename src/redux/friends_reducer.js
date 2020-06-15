@@ -5,9 +5,9 @@ const SET_USERS = 'SET_USERS';
 
 let initialState = {
     friends_list: [
-        {id: 1, followed: false, friend_name: 'Markus', mutual_friends:'Mutual friends', location: {city:'Berlin', country: 'Germany'}},
-        {id: 2, followed: true, friend_name: 'Bob', mutual_friends:'Mutual friends', location: {city:'New York', country: 'USA'}},
-        {id: 3, followed: false, friend_name: 'Jessica', mutual_friends:'Mutual friends', location: {city:"Paris", country: "France"}},
+        // {id: 1, followed: false, name: 'Markus', status:'Mutual friends', location: {city:'Berlin', country: 'Germany'}},
+        // {id: 2, followed: true, name: 'Bob', status:'Mutual friends', location: {city:'New York', country: 'USA'}},
+        // {id: 3, followed: false, name: 'Jessica', status:'Mutual friends', location: {city:"Paris", country: "France"}},
     ]
 }
 
@@ -38,7 +38,7 @@ const friends_reducer = (state = initialState, action) => {
             }
 
         case SET_USERS:
-            return {...state, friends_list: [...state.friends_list, ...action.friends]}    
+            return {...state, friends_list: [...state.friends_list, ...action.users]}    
 
         default: 
             return state;
@@ -48,6 +48,6 @@ const friends_reducer = (state = initialState, action) => {
 // Post on the main page
 export const followAC = (friendID) => ({ type: FOLLOW, friendID });
 export const unfollowAC = (friendID) => ({ type: UNFOLLOW, friendID });
-export const setFriendsAC = (friends) => ({ type: SET_USERS, friends });
+export const setFriendsAC = (users) => ({ type: SET_USERS, users });
 
 export default friends_reducer;

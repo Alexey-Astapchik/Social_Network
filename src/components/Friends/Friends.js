@@ -1,36 +1,41 @@
 import React from 'react'
 
 import '../Friends/Friends.css';
+import Axios, * as axios from 'axios';
+import { render } from '@testing-library/react';
 
-const Friends = (props) => {
+export default class Friends extends React.Component {
 
-    if(props.friends_list.length === 0){
-        props.setFriends({ friends: [
-            {id: 1, followed: false, friend_name: 'Markus', mutual_friends:'Mutual friends', location: {city:'Berlin', country: 'Germany'}},
-            {id: 2, followed: true, friend_name: 'Bob', mutual_friends:'Mutual friends', location: {city:'New York', country: 'USA'}},
-            {id: 3, followed: false, friend_name: 'Jessica', mutual_friends:'Mutual friends', location: {city:"Paris", country: "France"}},
-            ]
-        })
-    };
+    constructor(props){
+        super(props);
+
+        if(this.props.friends_list.length === 0){
+            axios.get('https://social-network.samuraijs.com/api/1.0/users')
+                .then(response => {
+                    this.props.setFriends(response.data.items);
+            })
+        };
+    }
     
-    return <div className="content_friends"> 
+    render () {
+        return <div className="content_friends"> 
         {   
-                props.friends_list.map( f => <div className='card friend_card' key={f.id}>
+                this.props.friends_list.map( f => <div className='card friend_card' key={f.id}>
                         <div className='friend_logo'>
                         </div>
                         <div className='friends_info'>
-                            <p>{f.friend_name}</p>
-                            <p>{f.mutual_friends}</p>
+                            <p>{f.name}</p>
+                            <p>{f.status}</p>
                             <p>
-                                City: {f.location.city}
+                                City: {"f.location.city"}
                             </p>
-                            <p>Country: {f.location.country}</p>
+                            <p>Country: {"f.location.country"}</p>
                         </div>
                         <div className='btn_toFollow'>
                             { f.followed 
-                            ? <button href='#' onClick={ () => { props.unfollow(f.id) }} 
+                            ? <button href='#' onClick={ () => { this.props.unfollow(f.id) }} 
                                 className='btn btn_follow'>Unfollow</button>
-                            : <button href='#' onClick={ () => { props.follow(f.id) }} 
+                            : <button href='#' onClick={ () => { this.props.follow(f.id) }} 
                                 className='btn btn_follow'>Follow</button> 
                             }
                         </div>
@@ -38,6 +43,5 @@ const Friends = (props) => {
                 )
         }
     </div>
+    }
 }
-
-export default Friends;

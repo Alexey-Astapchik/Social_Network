@@ -19,8 +19,8 @@ let mapDispatchToProps = (dispatch) => {
             let action = unfollowAC(friendID);
             dispatch(action);
         },
-        setFriends: (friends) =>{
-            let action = setFriendsAC(friends);
+        setFriends: (users) =>{
+            let action = setFriendsAC(users);
             dispatch(action);
         },
     }
