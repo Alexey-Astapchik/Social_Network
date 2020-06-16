@@ -4,11 +4,10 @@ const SET_USERS = 'SET_USERS';
 
 
 let initialState = {
-    friends_list: [
-        // {id: 1, followed: false, name: 'Markus', status:'Mutual friends', location: {city:'Berlin', country: 'Germany'}},
-        // {id: 2, followed: true, name: 'Bob', status:'Mutual friends', location: {city:'New York', country: 'USA'}},
-        // {id: 3, followed: false, name: 'Jessica', status:'Mutual friends', location: {city:"Paris", country: "France"}},
-    ]
+    friends_list: [],
+    pageSize: 5,
+    totalUsersCount: 20,
+    currentPage: 1  
 }
 
 const friends_reducer = (state = initialState, action) => {
