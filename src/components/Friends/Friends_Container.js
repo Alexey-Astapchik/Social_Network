@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import Friends from './Friends'
+import FriendsAPIComponent from './FriendsAPIComponent'
 import { followAC, unfollowAC, setFriendsAC, setCurrentPageAC, setTotalFriendsCountAC } from '../../redux/friends_reducer';
 
 let mapStateToProps = (state) => {
@@ -37,7 +37,6 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-
-const Friends_Container = connect(mapStateToProps, mapDispatchToProps)(Friends);
+const Friends_Container = connect(mapStateToProps, mapDispatchToProps)(FriendsAPIComponent);
 
 export default Friends_Container;

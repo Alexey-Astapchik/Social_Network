@@ -72,13 +72,23 @@
   margin-bottom: 20px;
 }
 
-.selectedPage span{
-  padding-right: 20px;
-  cursor: pointer;
-}
 
 .selected{
   color: #e4e6eb;
   font-weight: 900;
+  cursor: pointer;
+}
+.pag a{
+  margin-right: 20px;
+  background-color: #181a1b;
+  outline: none;
+  color: #e4e6eb;
+  cursor: pointer;
+}
+
+.pag a:hover{
+  color: #e4e6eb;
+  outline: none;
+  background-color: #242627;
   cursor: pointer;
 }
