@@ -4,7 +4,7 @@ import './App.css';
 
 import Header from './components/Header/Header';
 import Nav from './components/Nav/Nav';
-import Profile from './components/Profile/Profile';
+import Profile_Container from './components/Profile/Profile_Container';
 import Chats_Container from './components/Chats/Chats_Container';
 import Settings from './components/Settings/Settings';
 import Friends_Container from './components/Friends/Friends_Container';
@@ -22,7 +22,7 @@ const App = (props) => {
         <Route path='/Friends' render={() => <Friends_Container/>}/>
         <Route path='/Feed' component={Feed}/>
         <Route path='/Settings' component={Settings}/>
-        <Route path='/Profile' render={ () => <Profile store={props.store}/> }/>
+        <Route path='/Profile' render={ () => <Profile_Container store={props.store}/> }/>
         <Route path='/Chats' render={ () => <Chats_Container store={props.store} />}/>
       </div>
     </BrowserRouter>

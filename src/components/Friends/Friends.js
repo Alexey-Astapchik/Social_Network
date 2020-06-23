@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { NavLink } from 'react-router-dom'
+import '../Friends/Friends.css'
 
 let Friends = (props) => {
 
@@ -14,8 +16,10 @@ let Friends = (props) => {
     return <div className="content_friends"> 
     {   
             props.users.map( f => <div className='card friend_card' key={f.id}>
-                    <div className='friend_logo'>
-                    </div>
+
+                <NavLink to={'/Profile/' + f.id} className='friend_logo'>
+                </NavLink>
+                    
                     <div className='friends_info'>
                         <p>{f.name}</p>
                         <p>{f.status}</p>
