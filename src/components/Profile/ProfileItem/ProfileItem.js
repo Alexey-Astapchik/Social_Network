@@ -1,8 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-import '../ProfileItem/ProfileItem.css'
+import Loader from '../../Loader/Loader';
+import '../ProfileItem/ProfileItem.css';
 
 const ProfileItem = (props) => {
+
+  if (!props.profile) {
+    return <Loader />
+  }
+
     return (
       <div className='user_profile'>
         <div>
@@ -10,8 +16,9 @@ const ProfileItem = (props) => {
           </div>
           </div>
           <div className='user__name'>
-          <p>Name: Alex Bachman</p>
-          <p>Number: +345 23 8690 000 90</p>
+          <p>Name: {`${props.profile.fullName}`}</p>
+          <p>Contacs: {`${props.profile.contacts.github}`}</p>
+          <p>Job: {`${props.profile.lookingForAJobDescription}`}</p>
           <p>Date of birth: 29.02.1929 </p>
         </div>
       </div>

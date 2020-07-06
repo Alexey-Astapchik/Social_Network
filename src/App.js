@@ -22,7 +22,7 @@ const App = (props) => {
         <Route path='/Friends' render={() => <Friends_Container/>}/>
         <Route path='/Feed' component={Feed}/>
         <Route path='/Settings' component={Settings}/>
-        <Route path='/Profile' render={ () => <Profile_Container store={props.store}/> }/>
+        <Route path='/Profile/:userId' render={ () => <Profile_Container store={props.store}/> }/>
         <Route path='/Chats' render={ () => <Chats_Container store={props.store} />}/>
       </div>
     </BrowserRouter>
