@@ -9,7 +9,7 @@ import Chats_Container from './components/Chats/Chats_Container';
 import Settings from './components/Settings/Settings';
 import Friends_Container from './components/Friends/Friends_Container';
 import Feed from './components/Feed/Feed'
-
+import Header_container from './components/Header/Header_container'
 import { Route, BrowserRouter } from 'react-router-dom';
 import store from './redux/redux-store';
 
@@ -17,7 +17,7 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <div className='wrapper'>
-        <Header/>
+        <Header_container/>
         <Nav />
         <Route path='/Friends' render={() => <Friends_Container/>}/>
         <Route path='/Feed' component={Feed}/>

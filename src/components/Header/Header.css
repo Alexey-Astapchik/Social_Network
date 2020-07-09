@@ -1,6 +1,22 @@
 .header{
     grid-area: header;
     background-color: #242526;
-    /* border-radius: 7px; */
     border: 1px solid #3a3b3c;
+    position: relative;
   }
+
+  .header_login{
+    float: right;
+    position: relative;
+    right: 100px;
+  }
+
+.header_login a{
+  position: absolute;
+  display: flex;
+  border-radius: 45px;
+}
+.header_login img{
+  margin: 0 auto;
+  width: 30px;
+}
