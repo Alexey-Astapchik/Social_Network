@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 let mapStateToProps = (state) => {
     return {
         chatsPage: state.chatsPage,
+        isAuth: state.auth.isAuth,
     }
 };
 

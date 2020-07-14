@@ -12,6 +12,7 @@ import Feed from './components/Feed/Feed'
 import Header_container from './components/Header/Header_container'
 import { Route, BrowserRouter } from 'react-router-dom';
 import store from './redux/redux-store';
+import LoginPage from './components/LoginPage/LoginPage';
 
 const App = (props) => {
   return (
@@ -24,6 +25,7 @@ const App = (props) => {
         <Route path='/Settings' component={Settings}/>
         <Route path='/Profile/:userId' render={ () => <Profile_Container store={props.store}/> }/>
         <Route path='/Chats' render={ () => <Chats_Container store={props.store} />}/>
+        <Route path='/Login' render={() => <LoginPage/>}/>
       </div>
     </BrowserRouter>
   );

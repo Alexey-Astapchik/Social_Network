@@ -1,7 +1,7 @@
 import React from 'react'
 
 import '../Chats/Chats.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import DialogueItem from '../Chats/DialogueItem/DialogueItem'
 import MessageItem from '../Chats/MessageItem/MessageItem';
 import { updateMessageBodyCreator, sendMessageCreator} from '../../redux/chatsPage_reducer';
@@ -22,6 +22,9 @@ const Chats = (props) => {
         let body = e.target.value;
         props.updateDisplayMessage(body);
     }
+
+    if (!props.isAuth) return <Redirect to={'./Login'}/>
+    
 
     return (
         <div className="content_chats">
