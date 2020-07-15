@@ -18,6 +18,9 @@ import Friends from "./Friends";
 import Loader from "../Loader/Loader";
 import { usersAPI } from "../API/API";
 
+import withAuthRedirect from '../HOC/withAuthRedirect'
+import { compose } from 'redux';
+
 class FriendsAPIComponent extends React.Component {
   componentDidMount() {
     this.props.getUsers(this.props.currentPage, this.props.pageSize);
@@ -58,11 +61,14 @@ let mapStateToProps = (state) => {
   };
 };
 
-
-export default connect(mapStateToProps, {
-  follow,
-  unfollow,
-  setCurrentPage,
-  toggleFollowingProgress,
-  getUsers,
-})(FriendsAPIComponent);
+export default compose (
+  withAuthRedirect,
+  connect(mapStateToProps, 
+    {
+      follow,
+      unfollow,
+      setCurrentPage,
+      toggleFollowingProgress,
+      getUsers,
+    }) 
+)(FriendsAPIComponent)

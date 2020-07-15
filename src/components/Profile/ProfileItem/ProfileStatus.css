@@ -1,0 +1,9 @@
+span{
+    cursor: pointer;
+}
+
+.active_style{
+    border: 2px solid red;
+    background-color: aquamarine;
+    padding: 20px 20px;
+}

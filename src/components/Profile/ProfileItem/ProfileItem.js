@@ -2,6 +2,7 @@ import React from 'react';
 
 import Loader from '../../Loader/Loader';
 import '../ProfileItem/ProfileItem.css';
+import ProfileStatus from './ProfileStatus';
 
 const ProfileItem = (props) => {
 
@@ -20,6 +21,7 @@ const ProfileItem = (props) => {
           <p>Contacs: {`${props.profile.contacts.github}`}</p>
           <p>Job: {`${props.profile.lookingForAJobDescription}`}</p>
           <p>Date of birth: 29.02.1929 </p>
+          <ProfileStatus status={'Hi there!'}/>
         </div>
       </div>
     )

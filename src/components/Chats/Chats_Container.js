@@ -3,11 +3,14 @@ import '../Chats/Chats.css';
 import { updateMessageBodyCreator, sendMessageCreator} from '../../redux/chatsPage_reducer';
 import Chats from './Chats';
 import { connect } from 'react-redux';
+import {Redirect} from 'react-router-dom'
+import withAuthRedirect from '../HOC/withAuthRedirect';
+import { compose } from 'redux';
+
 
 let mapStateToProps = (state) => {
     return {
-        chatsPage: state.chatsPage,
-        isAuth: state.auth.isAuth,
+        chatsPage: state.chatsPage
     }
 };
 
@@ -20,9 +23,9 @@ let mapDispatchToProps = (dispatch) => {
             dispatch(sendMessageCreator());
         },
     }
-}
+};
 
-
-const Chats_Container = connect(mapStateToProps, mapDispatchToProps)(Chats);
-
-export default Chats_Container;
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
+)(Chats);
