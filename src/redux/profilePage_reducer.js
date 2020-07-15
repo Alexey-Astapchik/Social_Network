@@ -3,6 +3,7 @@ import {usersAPI} from '../components/API/API';
 const ADD_POST = 'ADD-POST';
 const ADD_NEW_POST_TEXT = 'ADD-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_STATUS = 'SET_STATUS';
 
 let initialState = {
     postsData: [
@@ -11,7 +12,8 @@ let initialState = {
         {id: 3, post: 'I got the job at Google', likeCounts:23}
     ],
     newPostText: '',
-    profile: null
+    profile: null,
+    status: ''
 }
 
 const profilePage_reducer = (state = initialState, action) => {
@@ -39,6 +41,11 @@ const profilePage_reducer = (state = initialState, action) => {
                 ...state,
                 profile: action.profile
             };
+        case SET_STATUS:
+            return {
+                ...state,
+                status: action.status 
+            }
 
         default: 
             return state;
@@ -49,11 +56,31 @@ const profilePage_reducer = (state = initialState, action) => {
 export const addPostActionCreator = () => ({ type: ADD_POST });
 export const updateNewPostActionCreator = (postItem) => ({type: ADD_NEW_POST_TEXT, newText: postItem});
 export const setUserProfile = (profile) => ({type:SET_USER_PROFILE, profile});
+export const setUserStatus = (status) => ({type:SET_STATUS, status});
+
 
 export const getUserProfile = (userId) => (dispatch) => {
 
-    usersAPI.getProfile(userId).then(response => {
-        dispatch(setUserProfile(response.data))
+    usersAPI.getProfile(userId)
+        .then(response => {
+            dispatch(setUserProfile(response.data))
+    })
+}
+
+export const getStatsus = (status) => (dispatch) => {
+
+    usersAPI.getStatsus(status)
+        .then(response => {
+            if (response.date.resultCode ===  0){
+                dispatch(setUserStatus(response.data))
+            }
+    })
+}
+export const updateStatsus = (status) => (dispatch) => {
+
+    usersAPI.updateStatsus(status)
+        .then(response => {
+            dispatch(setUserStatus(response.data))
     })
 }
 

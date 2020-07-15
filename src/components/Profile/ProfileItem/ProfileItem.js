@@ -21,7 +21,7 @@ const ProfileItem = (props) => {
           <p>Contacs: {`${props.profile.contacts.github}`}</p>
           <p>Job: {`${props.profile.lookingForAJobDescription}`}</p>
           <p>Date of birth: 29.02.1929 </p>
-          <ProfileStatus status={'Hi there!'}/>
+          <ProfileStatus status={'What are you thinking?'}/>
         </div>
       </div>
     )
