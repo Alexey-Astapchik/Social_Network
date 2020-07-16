@@ -1,4 +1,4 @@
-import {usersAPI} from '../components/API/API';
+import {usersAPI, profileAPI} from '../components/API/API';
 
 const ADD_POST = 'ADD-POST';
 const ADD_NEW_POST_TEXT = 'ADD-NEW-POST-TEXT';
@@ -13,7 +13,7 @@ let initialState = {
     ],
     newPostText: '',
     profile: null,
-    status: ''
+    status: "", 
 }
 
 const profilePage_reducer = (state = initialState, action) => {
@@ -45,7 +45,7 @@ const profilePage_reducer = (state = initialState, action) => {
             return {
                 ...state,
                 status: action.status 
-            }
+            };  
 
         default: 
             return state;
@@ -54,9 +54,8 @@ const profilePage_reducer = (state = initialState, action) => {
 
 // Post on the main page
 export const addPostActionCreator = () => ({ type: ADD_POST });
-export const updateNewPostActionCreator = (postItem) => ({type: ADD_NEW_POST_TEXT, newText: postItem});
 export const setUserProfile = (profile) => ({type:SET_USER_PROFILE, profile});
-export const setUserStatus = (status) => ({type:SET_STATUS, status});
+export const setStatus = (status) => ({type:SET_STATUS, status});
 
 
 export const getUserProfile = (userId) => (dispatch) => {
@@ -65,23 +64,24 @@ export const getUserProfile = (userId) => (dispatch) => {
         .then(response => {
             dispatch(setUserProfile(response.data))
     })
-}
+};
 
-export const getStatsus = (status) => (dispatch) => {
-
-    usersAPI.getStatsus(status)
+export const getStatus = (userId) => (dispatch) => {
+    profileAPI.getStatus(userId)
         .then(response => {
-            if (response.date.resultCode ===  0){
-                dispatch(setUserStatus(response.data))
-            }
+            dispatch(setStatus(response.data))
     })
-}
-export const updateStatsus = (status) => (dispatch) => {
+};
 
-    usersAPI.updateStatsus(status)
+export const updateStatus = (status) => (dispatch) => {
+    profileAPI.updateStatus(status)
         .then(response => {
-            dispatch(setUserStatus(response.data))
-    })
-}
+            // if (response.date.resultCode ===  0) {
+                dispatch(setStatus(status))
+            // }
+        })  
+};
+
+export const updateNewPostActionCreator = (postItem) => ({type: ADD_NEW_POST_TEXT, newText: postItem});
 
 export default profilePage_reducer;

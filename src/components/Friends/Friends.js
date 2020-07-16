@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 import { NavLink } from 'react-router-dom'
 import '../Friends/Friends.css'
@@ -29,7 +29,9 @@ let Friends = (props) => {
                         <p>
                             City: {"f.location.city"}
                         </p>
-                        <p>Country: {"f.location.country"}</p>
+                        <p>
+                            Country: {"f.location.country"}
+                        </p>
                     </div>
                     <div className='btn_toFollow'>
                         { f.followed 

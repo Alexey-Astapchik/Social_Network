@@ -12,7 +12,7 @@ const Profile = (props) => {
   
     return (
       <div className="content">
-        <ProfileItem profile={props.profile}/>
+        <ProfileItem profile={props.profile} status={props.status} updateStatus= {props.updateStatus} />
         <MyPosts_Container store={store} />
       </div>
     )

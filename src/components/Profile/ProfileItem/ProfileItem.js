@@ -15,13 +15,14 @@ const ProfileItem = (props) => {
         <div>
           <div className="profile__avatar">
           </div>
-          </div>
-          <div className='user__name'>
+        </div>
+        <div className='user__name'>
           <p>Name: {`${props.profile.fullName}`}</p>
           <p>Contacs: {`${props.profile.contacts.github}`}</p>
           <p>Job: {`${props.profile.lookingForAJobDescription}`}</p>
           <p>Date of birth: 29.02.1929 </p>
-          <ProfileStatus status={'What are you thinking?'}/>
+          {/* <ProfileStatus status={props.status} updateStatus={props.updateStatus}/> */}
+          <p><ProfileStatus status={props.status} updateStatus={props.updateStatus}/></p>
         </div>
       </div>
     )
