@@ -1,6 +1,6 @@
 import React from 'react'
 import '../Chats/Chats.css';
-import { updateMessageBodyCreator, sendMessageCreator} from '../../redux/chatsPage_reducer';
+import { sendMessageCreator} from '../../redux/chatsPage_reducer';
 import Chats from './Chats';
 import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom'
@@ -16,12 +16,9 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {    
-        updateDisplayMessage: (body) => {
-            dispatch(updateMessageBodyCreator(body));
-        },
-        onSendMessage: () => {
-            dispatch(sendMessageCreator());
-        },
+        onSendMessage: (newMessageBody) => {
+            dispatch(sendMessageCreator(newMessageBody));
+        }
     }
 };
 

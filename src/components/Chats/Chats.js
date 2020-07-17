@@ -4,47 +4,31 @@ import '../Chats/Chats.css';
 import { NavLink, Redirect } from 'react-router-dom';
 import DialogueItem from '../Chats/DialogueItem/DialogueItem'
 import MessageItem from '../Chats/MessageItem/MessageItem';
-import { updateMessageBodyCreator, sendMessageCreator} from '../../redux/chatsPage_reducer';
+import { sendMessageCreator} from '../../redux/chatsPage_reducer';
+import {Field,reduxForm} from 'redux-form'
 
 const Chats = (props) => {
   
     let state = props.chatsPage;
 
-    let chatsEl = state.chatsData.map( u =>  <DialogueItem name={u.name} id={u.id} /> )     
+    let chatsEl = state.chatsData.map( u =>  <DialogueItem name={u.name}  id={u.id} /> )     
     let messageEl = state.messagesData.map( m => <MessageItem message={m.message} /> )
-    let newMessageText = state.newMessageText;
+    let newMessageBody = state.newMessageBody;
 
-    let sendMessage = () => {
-        props.onSendMessage();
+
+
+    let addNewMessage = (value) => {
+        props.onSendMessage(value.newMessageBody);
     }
 
-    let displayNewMessage = (e) => {
-        let body = e.target.value;
-        props.updateDisplayMessage(body);
-    }
-
-    if (!props.isAuth) return <Redirect to={'./Login'}/>
+    if (!props.isAuth) return <Redirect to={ './Login' }/>
     
 
     return (
         <div className="content_chats">
             <div className="dialogues">
                 <div className='message_window'>
-                    <div>
-                        <input className="mes_inp form-control" 
-                            value={ newMessageText }
-                            onChange={ displayNewMessage }
-                            placeholder='Aa'>    
-                        </input>
-                    </div>
-                    <div>
-                        <button href='#'
-                            onClick={ sendMessage } 
-                            className="mes_btn">
-                            <img src="https://img.icons8.com/color/48/000000/filled-sent.png"/>
-                            Send
-                        </button>
-                    </div>
+                    <AddMessageReduxForm  onSubmit={addNewMessage}/>
                 </div>
                 <div className="userNames">
                     { chatsEl }
@@ -56,5 +40,29 @@ const Chats = (props) => {
         </div>
     )
 }
+
+const AddMessageForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                < Field
+                    className="mes_inp form-control"                     
+                    placeholder='Write your message...'
+                    name={'newMessageBody'}    
+                    component={'input'}
+                />
+            </div>
+            <div>
+                <button className="mes_btn">
+                        <img src="https://img.icons8.com/color/48/000000/filled-sent.png"/>
+                        Send
+                </button>
+            </div>
+        </form>
+    )
+}
+
+
+const AddMessageReduxForm = reduxForm({form: 'chatAddMessageForm'})(AddMessageForm)
 
 export default Chats;

@@ -1,4 +1,3 @@
-const ADD_NEW_MESSAGE_TEXT = 'ADD-NEW-MESSAGE-TEXT';
 const SEND_MESSAGE = 'SEND-MESSAGE';
 
 
@@ -18,33 +17,25 @@ let initialState = {
         {id: 4, message: "Wooow!! How was it? You're mad man ;))"},
         {id: 5, message: 'So, what did he tell you?'},
         {id: 6, message: 'A u ready for this exam? I spent the whole night, but... still nothing'}
-    ],
-    newMessageText: ''
+    ]
      
 };
 
 const chatsPage_reducer = (state = initialState, action) => {
     switch(action.type) {
-        case ADD_NEW_MESSAGE_TEXT: 
-            return {
-                ...state,
-                newMessageText: action.body
-            };
         case SEND_MESSAGE: 
-            let body = state.newMessageText;
+            let body = action.newMessageBody;
             return {
                 ...state,
-                newMessageText: '',
                 messagesData: [...state.messagesData,{id: 8, message: body}],
             };
-            // stateCopy.messagesData.push( {id: 8, message: body} );
         default:
             return state;
     }
 };
 
 // Message in chats page
-export const sendMessageCreator = () => ({ type: SEND_MESSAGE });
-export const updateMessageBodyCreator = (body) => ({type: ADD_NEW_MESSAGE_TEXT, body: body});
+export const sendMessageCreator = (newMessageBody) => ({ type: SEND_MESSAGE, newMessageBody });
+
 
 export default chatsPage_reducer;
