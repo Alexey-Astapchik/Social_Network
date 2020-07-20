@@ -1,18 +1,15 @@
 .container-form{
-    width: 400px;
-    padding-top: 100px;
-    margin: 0 auto;
+    width: 400px !important;
+    padding-top: 100px !important;
+    margin: 0 auto !important;
+    position: relative;
 }
-.input_form{
+.input_form {
     display: flex;
     flex-direction: column-reverse;
     margin: 1.2rem 0;
+    width: 450px;
 }
-input, 
-label{
-    transition: top .5s ease 2s;
-    
-} 
 label{
     color: #757575;
     padding-left: 10px;
@@ -22,10 +19,11 @@ label{
     transform-origin: left top;
     position: absolute;
     font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
 }
 
 input {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     padding: 20px 10px 10px 10px;
     border: none;
     outline: none;
@@ -34,34 +32,32 @@ input {
     font-family: 'Montserrat', sans-serif;
 }
 
-input::placeholder{
-    opacity: 0;
-}
-
-input:focus,
-input:not(:placeholder-shown){
-    border-bottom: 2px solid;
-}
-
-input:not(placeholder-shown)~label,
-input:focus ~ label {
-    transform: translate(10px, -30px) scale(0.8);
-    padding-left: 5px;
-    color: #b0b3b8;
-}
 
 .input_box{
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
-
-
+    align-self: flex-start;
 }
 .btn_form{
     width: 90px;
-    border-radius: 5px;
+    padding: 3px 3px;
+    margin-left: 25px;
+    border-radius: 10px;
     background-color: #3a3b3d;
     font-family: 'Montserrat', sans-serif;
     outline: none;
     color: #b0b3b8;
 }
+.checkbox_form{
+    top: 100px;
+}
+
+/* .check_remember{
+    margin-left: 10px;
+    background-color: #3a3b3d;
+} */
+
+.checkBox_text {
+    font-size: 1rem;
+    margin-left: 23px;
+} 

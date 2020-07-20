@@ -1,7 +1,11 @@
 import React from 'react';
 import Post from '../Post/Post';
 import '../MyPosts/MyPosts.css';
-import {Field,reduxForm} from 'redux-form'
+import {Field,reduxForm} from 'redux-form';
+import { requiredField, maxLenCreator } from '../../util/validator';
+import Textarea from '../ValidationForm/ValidationForm'
+
+const maxLength = maxLenCreator(10)
 
 const MyPosts = (props) => {
 
@@ -31,14 +35,16 @@ const MyPosts = (props) => {
 
 const AddNewPostForm = (props) =>{
   return (
-      <form onSubmit={props.handleSubmit}>
+      <form onSubmit={props.handleSubmit}>  
         <Field  ref={props.newPostItem} 
                 className="inp form-control" 
                 id="exampleInputEmail1" 
                 placeholder="Write a post..." 
                 aria-describedby="emailHelp"
-                component={'input'}
-                name={'newPostText'}/>
+                // component={Textarea}
+                component={Textarea}
+                name={'newPostText'}
+                validate={[requiredField, maxLength]}/>
           <div className='btns'>
             <button
                 className="btn"><img src="https://img.icons8.com/color/48/000000/send-letter--v1.png"/>
