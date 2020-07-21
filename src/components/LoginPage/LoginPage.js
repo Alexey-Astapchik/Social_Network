@@ -28,7 +28,7 @@ const LoginForm = (props) =>{
                     </div>
                     <div className='input_form'>
                         <Field
-                                type='password'
+                                type={'password'}
                                 name={'password'}
                                 id={'password'}
                                 placeholder={'Password'}
@@ -58,7 +58,7 @@ const LoginPage = (props) => {
     if(props.isAuth) {
         return <Redirect to={'/Profile'}/>
     }
-    return(
+    return (
         <LoginReduxForm onSubmit={onSubmit}/>
     )
     

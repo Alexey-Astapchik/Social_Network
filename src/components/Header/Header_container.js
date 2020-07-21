@@ -7,15 +7,9 @@ import {authAPI} from '../API/API';
 
 class Header_container extends React.Component {
 
-    componentDidMount(){
-        this.props.getAuthUserData()
-    }
+   
 
     render() {
-
-
-
-
         return <Header {...this.porps} />
     }
 }
@@ -26,4 +20,4 @@ let mapStateToProps = (state) => {
     login: state.auth.isAuth
 }}
 
-export default connect (mapStateToProps, {getAuthUserData}) (Header_container); 
+export default connect (mapStateToProps) (Header_container); 

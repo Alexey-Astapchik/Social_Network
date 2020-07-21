@@ -22,6 +22,7 @@ const Textarea = ({input, meta, ...props}) => {
 
     const isError = meta.touched && meta.error 
 
+
     return (
         <div className={isError ? 'error_post_message' : '' }>     
             <input {...input} {...props} type="text" class="inp form-control" id="validationCustom03" />
