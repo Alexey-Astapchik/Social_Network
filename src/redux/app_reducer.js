@@ -1,5 +1,6 @@
 import {authAPI} from '../components/API/API'
 import { stopSubmit } from 'redux-form';
+import {getAuthUserData} from './ authy_reducer';
 
 const SET_INITIALIZE = 'SET_INITIALIZE';
 
@@ -22,11 +23,18 @@ const app_reducer = (state = initialState, action) => {
 };
 
 
-export const initializationApp = () => ({ type: SET_INITIALIZE}});
+export const initializeApp = () => ({ type: SET_INITIALIZE});
 
 
 export const initialize = () => (dispatch) => {
     
+    let promise = dispatch(getAuthUserData());
+
+    Promise.all([promise])
+        .then(() => {
+        dispatch(initializeApp());
+    })
+
 }
 
 export default app_reducer;

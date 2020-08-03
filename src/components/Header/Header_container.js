@@ -7,8 +7,6 @@ import {authAPI} from '../API/API';
 
 class Header_container extends React.Component {
 
-   
-
     render() {
         return <Header {...this.porps} />
     }

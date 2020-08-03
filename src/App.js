@@ -14,15 +14,20 @@ import { Route, BrowserRouter, withRouter } from 'react-router-dom';
 import store from './redux/redux-store';
 import LoginPage from './components/LoginPage/LoginPage';
 import {getAuthUserData} from './redux/ authy_reducer';
+import {initialize} from './redux/app_reducer'
 import { compose } from 'redux'
+import Loader from './components/Loader/Loader';
 
 class App extends React.Component{
 
   componentDidMount(){
-    this.props.getAuthUserData();
+    this.props.initialize();
   }
 
   render (){
+    if (!this.props.initialized){
+      return <Loader/>
+    }
     return (
       <BrowserRouter>
         <div className='wrapper'>
@@ -41,5 +46,9 @@ class App extends React.Component{
  
 }
 
+const mapStateToProps = (state) => ({
+  initialized: state.app.initialized
+})
+
 export default compose(
-  connect(null, {getAuthUserData}))(App);
+  connect(mapStateToProps, {initialize}))(App);
